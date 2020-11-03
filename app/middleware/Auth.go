@@ -43,5 +43,6 @@ func Auth(c *gin.Context)  {
 		c.Abort()
 	}
 
+	fmt.Println(idAccount)
 	c.Set("account_number", idAccount)
 }
