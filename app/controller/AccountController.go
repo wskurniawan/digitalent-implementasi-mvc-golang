@@ -59,7 +59,7 @@ func (ctrl AccountController) GetAccount(ctx *gin.Context) {
 	}
 
 	if !flag {
-		utils.WrapAPIError(ctx, "unkown error", http.StatusInternalServerError)
+		utils.WrapAPIError(ctx, "unknown error", http.StatusInternalServerError)
 		return
 	}
 

@@ -34,7 +34,7 @@ func Auth(c *gin.Context)  {
 	fmt.Println(claims)
 
 	var idAccount int
-	err = mapstructure.Decode(claims["account_number"], idAccount)
+	err = mapstructure.Decode(claims["account_number"], &idAccount)
 	if err != nil {
 		result := gin.H{
 			"message": err.Error(),
