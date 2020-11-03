@@ -13,17 +13,18 @@ type TransactionController struct {
 }
 
 func (ctrl TransactionController) Transfer (ctx *gin.Context) {
-	transactionModel := model.Transaction{
+	transactionModel := model.TransactionModel{
 		DB: ctrl.DB,
 	}
+	var trx model.Transaction
 
-	err := ctx.Bind(&transactionModel)
+	err := ctx.Bind(&trx)
 	if err != nil {
 		utils.WrapAPIError(ctx, err.Error(), http.StatusBadRequest)
 		return
 	}
 
-	flag, err := transactionModel.Transfer()
+	flag, err := transactionModel.Transfer(trx)
 	if err != nil {
 		utils.WrapAPIError(ctx, err.Error(), http.StatusInternalServerError)
 		return
@@ -39,17 +40,18 @@ func (ctrl TransactionController) Transfer (ctx *gin.Context) {
 }
 
 func (ctrl TransactionController) Withdraw (ctx *gin.Context) {
-	transactionModel := model.Transaction{
+	transactionModel := model.TransactionModel{
 		DB: ctrl.DB,
 	}
+	var trx model.Transaction
 
-	err := ctx.Bind(&transactionModel)
+	err := ctx.Bind(&trx)
 	if err != nil {
 		utils.WrapAPIError(ctx, err.Error(), http.StatusBadRequest)
 		return
 	}
 
-	flag, err := transactionModel.Withdraw()
+	flag, err := transactionModel.Withdraw(trx)
 	if err != nil {
 		utils.WrapAPIError(ctx, err.Error(), http.StatusInternalServerError)
 		return
@@ -65,17 +67,18 @@ func (ctrl TransactionController) Withdraw (ctx *gin.Context) {
 }
 
 func (ctrl TransactionController) Deposit (ctx *gin.Context) {
-	transactionModel := model.Transaction{
+	transactionModel := model.TransactionModel{
 		DB: ctrl.DB,
 	}
+	var trx model.Transaction
 
-	err := ctx.Bind(&transactionModel)
+	err := ctx.Bind(&trx)
 	if err != nil {
 		utils.WrapAPIError(ctx, err.Error(), http.StatusBadRequest)
 		return
 	}
 
-	flag, err := transactionModel.Deposit()
+	flag, err := transactionModel.Deposit(trx)
 	if err != nil {
 		utils.WrapAPIError(ctx, err.Error(), http.StatusInternalServerError)
 		return

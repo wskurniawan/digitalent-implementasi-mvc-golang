@@ -15,7 +15,7 @@ func DBInit() *gorm.DB {
 	}
 
 	// automigrate here
-	db.AutoMigrate(new(model.AccountModel), new(model.Transaction))
+	db.AutoMigrate(new(model.Account), new(model.Transaction))
 
 	DB = db
 
