@@ -1,15 +1,20 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
 	"github.com/gin-contrib/cors"
-	"implementasi-mvc/app/middleware"
-
+	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 	"implementasi-mvc/app/config"
 	"implementasi-mvc/app/controller"
+	"implementasi-mvc/app/middleware"
 )
 
 func main()  {
+	err := godotenv.Load()
+	if err != nil {
+		panic(err)
+	}
+
 	db := config.DBInit()
 
 	accountController := controller.AccountController{DB: db}
